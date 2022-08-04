@@ -77,28 +77,44 @@ function App() {
           </dl>
         </details>
       </section>
-      <section>
+      <section className="theme-controls">
         <h2>Theme me up</h2>
-        <button
-          disabled={loading}
-          onClick={async () =>
-            loadCssFromUrl(
-              "https://gist.github.com/essential-randomness/26408ede94ccb51c2074364cab52c3fd"
-            )
-          }
-        >
-          Theme 1
-        </button>
-        <button
-          disabled={loading}
-          onClick={async () =>
-            loadCssFromUrl(
-              "https://gist.github.com/essential-randomness/bf1a25726d5564cbf380f5cf42cb2b46"
-            )
-          }
-        >
-          Theme 2
-        </button>
+        <div>
+          <button
+            disabled={loading}
+            onClick={async () =>
+              loadCssFromUrl(
+                "https://gist.github.com/essential-randomness/26408ede94ccb51c2074364cab52c3fd"
+              )
+            }
+          >
+            Theme 1
+          </button>
+          <a
+            href="https://gist.github.com/essential-randomness/26408ede94ccb51c2074364cab52c3fd"
+            target="_blank"
+          >
+            See gist
+          </a>
+        </div>
+        <div>
+          <button
+            disabled={loading}
+            onClick={async () =>
+              loadCssFromUrl(
+                "https://gist.github.com/essential-randomness/bf1a25726d5564cbf380f5cf42cb2b46"
+              )
+            }
+          >
+            Theme 2
+          </button>
+          <a
+            href="https://gist.github.com/essential-randomness/bf1a25726d5564cbf380f5cf42cb2b46"
+            target="_blank"
+          >
+            See gist
+          </a>
+        </div>
       </section>
     </main>
   );

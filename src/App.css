@@ -39,3 +39,14 @@
 .read-the-docs {
   color: #888;
 }
+
+section.theme-controls div {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 5px;
+}
+
+section.theme-controls div a {
+  font-size: smaller;
+}
