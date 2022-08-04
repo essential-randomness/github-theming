@@ -1,34 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+    <main>
+      <section>
+        <img
+          alt="bobatan"
+          src="https://essentialrandomness.com/content/images/size/w1600/2021/06/fellow_fans.png"
+          width={200}
+        />
+        <h1>Welcome to a small experiment</h1>
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+          The goal of this experiment? Testing importing CSS file directly from
+          GitHub!
         </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+        <details>
+          <summary>Tell me more</summary>
+          <dl>
+            <dt>The question</dt>
+            <dd>
+              Can the theme of an already-deployed website be customized by
+              importing a CSS file from a GitHub gist or repo?
+            </dd>
+            <dt>The motivation</dt>
+            <dd>
+              Modern indie software must return to users the power of
+              customizability that the corporate web has taken away.
+            </dd>
+            <dt>Why GitHub</dt>
+            <dd>
+              This work is part of a larger exploration in using git-based
+              system as a decentralized repository of data.
+            </dd>
+          </dl>
+        </details>
+      </section>
+    </main>
+  );
 }
 
-export default App
+export default App;
