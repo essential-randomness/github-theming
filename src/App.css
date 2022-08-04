@@ -50,3 +50,25 @@ section.theme-controls div {
 section.theme-controls div a {
   font-size: smaller;
 }
+
+summary:hover {
+  cursor: pointer;
+}
+
+dl {
+  border: 1px dashed white;
+  border-radius: 8px;
+  padding: 25px;
+}
+
+dt {
+  font-size: larger;
+}
+
+dt:not(:first-child) {
+  margin-top: 15px;
+}
+
+dd {
+  margin-inline-start: 0px;
+}
