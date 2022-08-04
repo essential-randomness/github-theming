@@ -4,7 +4,7 @@ import React from "react";
 
 const getGistIdFromUrl = (url: string) => {
   // Url example: https://gist.github.com/essential-randomness/26408ede94ccb51c2074364cab52c3fd
-  return "26408ede94ccb51c2074364cab52c3fd";
+  return url.match(/(\w+)$/gi)?.[0];
 };
 
 const fetchGistContent = async (gistId: string) => {
@@ -18,12 +18,30 @@ const fetchGistContent = async (gistId: string) => {
 const loadGist = async (url: string) => {
   const gistId = getGistIdFromUrl(url);
 
+  if (!gistId) {
+    window.alert("something went wrong while loading gist");
+    return;
+  }
+
   return await fetchGistContent(gistId);
 };
 
 function App() {
   const [loading, setLoading] = React.useState(false);
   const styleElementRef = React.useRef<HTMLStyleElement | null>(null);
+
+  const loadCssFromUrl = async (url: string) => {
+    setLoading(true);
+    const gistContent = await loadGist(url);
+    if (styleElementRef.current) {
+      document.head.removeChild(styleElementRef.current);
+    }
+    const styleEl = document.createElement("style");
+    styleEl.textContent = gistContent;
+    document.head.appendChild(styleEl);
+    styleElementRef.current = styleEl;
+    setLoading(false);
+  };
 
   return (
     <main>
@@ -63,22 +81,23 @@ function App() {
         <h2>Theme me up</h2>
         <button
           disabled={loading}
-          onClick={async () => {
-            setLoading(true);
-            const gistContent = await loadGist(
+          onClick={async () =>
+            loadCssFromUrl(
               "https://gist.github.com/essential-randomness/26408ede94ccb51c2074364cab52c3fd"
-            );
-            if (styleElementRef.current) {
-              document.head.removeChild(styleElementRef);
-            }
-            const styleEl = document.createElement("style");
-            styleEl.textContent = gistContent;
-            document.head.appendChild(styleEl);
-            styleElementRef.current = styleEl;
-            setLoading(false);
-          }}
+            )
+          }
         >
-          Test
+          Theme 1
+        </button>
+        <button
+          disabled={loading}
+          onClick={async () =>
+            loadCssFromUrl(
+              "https://gist.github.com/essential-randomness/bf1a25726d5564cbf380f5cf42cb2b46"
+            )
+          }
+        >
+          Theme 2
         </button>
       </section>
     </main>
